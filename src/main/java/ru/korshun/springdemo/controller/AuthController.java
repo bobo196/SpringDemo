@@ -30,9 +30,6 @@ public class AuthController {
     @Autowired
     UserRepository userRepository;
 
-//    @Autowired
-//    PasswordEncoder passwordEncoder;
-
     @Autowired
     JwtTokenProvider tokenProvider;
 
@@ -59,32 +56,4 @@ public class AuthController {
                 new LoginData(tokenProvider.generateToken(authentication)));
     }
 
-//    @PostMapping("/signup")
-//    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
-//        if(userRepository.existsByUsername(signUpRequest.getUsername())) {
-//            return new ResponseEntity<>(new ApiResponse(false, "Username is already taken!"),
-//                    HttpStatus.BAD_REQUEST);
-//        }
-//
-//        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
-//            return new ResponseEntity<>(new ApiResponse(false, "Email Address already in use!"),
-//                    HttpStatus.BAD_REQUEST);
-//        }
-//
-//        // Creating user's account
-//        User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
-//                signUpRequest.getEmail(), signUpRequest.getPassword());
-//
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//
-//        User result = userRepository.save(user);
-//
-//        URI location = ServletUriComponentsBuilder
-//                .fromCurrentContextPath().path("/api/users/{username}")
-//                .buildAndExpand(result.getUsername()).toUri();
-//
-//        return ResponseEntity.created(location).body(new ApiResponse(true,
-//                "User registered successfully"));
-//
-//    }
 }
